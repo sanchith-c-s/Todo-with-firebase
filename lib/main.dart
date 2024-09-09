@@ -3,7 +3,9 @@ import 'package:demo/databaseOption.dart';
 import 'package:demo/email_auth.dart';
 import 'package:demo/nav.dart';
 import 'package:demo/pages/home_page.dart';
+import 'package:demo/pages/storage.dart';
 import 'package:demo/phoneauth.dart';
+import 'package:demo/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +13,9 @@ import 'package:flutter/material.dart';
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // options: DefaultFirebaseOptions.currentPlatform,
+    //  options: DefaultFirebaseOptions.currentPlatform,
   );
+  await signInUserAnon();
   FirebaseFirestore.instance.settings= const Settings(
     persistenceEnabled: true
   );
@@ -47,7 +50,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-        home:HomePage (),
+        home:HomePage(),
       // home: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder: (context,snapshot){
       //   if(snapshot.hasData){
       //     return Databaseoption();

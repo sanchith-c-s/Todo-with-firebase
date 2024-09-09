@@ -70,15 +70,15 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context,index){
             Todo todo = todos[index].data();
             String todoId = todos[index].id;
-            // print(todoId);
-          return Padding(padding: EdgeInsets.symmetric(
+            // print(todoId); 
+          return Padding(padding:  EdgeInsets.symmetric(
             vertical: 10,
             horizontal: 10
           ),
           child: ListTile(
             tileColor: Colors.blue[100],
             title: Text(todo.task),
-            subtitle: Text(DateFormat("dd-MM-yyyy h:mm a").format(todo.updatedOn.toDate(),),),
+            subtitle: Text(DateFormat("dd-MM-yyyy hh:mm a").format(todo.updatedOn.toDate(),),),
             trailing: Checkbox(value: todo.isDone,
              onChanged: (value){
               Todo updatedTodo = todo.copyWith(isDone: !todo.isDone, updatedOn: Timestamp.now());
